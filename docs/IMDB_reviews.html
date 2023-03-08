@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>index</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>IMDB_reviews</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -58,7 +58,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 .highlight .ss { color: var(--jp-mirror-editor-string-color) } /* Literal.String.Symbol */
 .highlight .il { color: var(--jp-mirror-editor-number-color) } /* Literal.Number.Integer.Long */
   </style>
-<style type="text/css">
+<!-- <style type="text/css">
     div#notebook {
  font-family: sans-serif;
  font-size: 13pt;
@@ -3313,7 +3313,7 @@ div#maintoolbar {
     });
 </script>
     
-  </style>
+  </style> -->
 
 
 
@@ -17853,10 +17853,1871 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Content">Content<a class="anchor-link" href="#Content">&#182;</a></h2><ol>
-<li><a href="./example.html">example</a></li>
-<li><a href="./IMDB_reviews.html">Gupta - Vecchiettini project</a></li>
-</ol>
+<h1 id="IMDB-Reviews-Classification">IMDB Reviews Classification<a class="anchor-link" href="#IMDB-Reviews-Classification">&#182;</a></h1>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Problem-Statement">Problem Statement<a class="anchor-link" href="#Problem-Statement">&#182;</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Analyzing the effects of Architecture, Number of neurons, and Batch size on a sentiment analysis problem.</p>
+<p>We'll be classifying if the review is positive or negative.</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>The following is an extract of the article &quot;Python for NLP: Movie Sentiment Analysis using Deep Learning in Keras&quot; (available at: <a href="https://stackabuse.com/python-for-nlp-movie-sentiment-analysis-using-deep-learning-in-keras/">https://stackabuse.com/python-for-nlp-movie-sentiment-analysis-using-deep-learning-in-keras/</a>)</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="The-Dataset">The Dataset<a class="anchor-link" href="#The-Dataset">&#182;</a></h2><p>The dataset that can be downloaded from this Kaggle link (<a href="https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews">https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews</a>).</p>
+<p>If you download the dataset and extract the compressed file, you will see a CSV file. The file contains 50,000 records and two columns: review and sentiment. The review column contains text for the review and the sentiment column contains sentiment for the review. The sentiment column can have two values i.e. &quot;positive&quot; and &quot;negative&quot; which makes our problem a binary classification problem.</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Importing-Required-Libraries">Importing Required Libraries<a class="anchor-link" href="#Importing-Required-Libraries">&#182;</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[249]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># The following script imports the required libraries:</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">nltk</span>
+<span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">stopwords</span>
+
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">array</span>
+<span class="kn">from</span> <span class="nn">keras.preprocessing.text</span> <span class="kn">import</span> <span class="n">one_hot</span>
+<span class="kn">from</span> <span class="nn">keras_preprocessing.sequence</span> <span class="kn">import</span> <span class="n">pad_sequences</span>
+<span class="kn">from</span> <span class="nn">keras.models</span> <span class="kn">import</span> <span class="n">Sequential</span>
+<span class="kn">from</span> <span class="nn">keras.layers.core</span> <span class="kn">import</span> <span class="n">Activation</span><span class="p">,</span> <span class="n">Dropout</span><span class="p">,</span> <span class="n">Dense</span>
+<span class="kn">from</span> <span class="nn">keras.layers</span> <span class="kn">import</span> <span class="n">Flatten</span>
+<span class="kn">from</span> <span class="nn">keras.layers</span> <span class="kn">import</span> <span class="n">GlobalMaxPooling1D</span>
+<span class="kn">from</span> <span class="nn">keras.layers</span> <span class="kn">import</span> <span class="n">Embedding</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">keras.preprocessing.text</span> <span class="kn">import</span> <span class="n">Tokenizer</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Importing-and-Analyzing-the-Dataset">Importing and Analyzing the Dataset<a class="anchor-link" href="#Importing-and-Analyzing-the-Dataset">&#182;</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[250]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Read csv</span>
+<span class="n">movie_reviews</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;IMDB Dataset.csv&quot;</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[251]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Check if the dataset contains any NULL value or not</span>
+<span class="n">movie_reviews</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">any</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[251]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>False</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[252]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Shape of dataset</span>
+<span class="n">movie_reviews</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[252]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>(50000, 2)</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Note: In the script above we use the read_csv() method of the pandas library to read the CSV file containing our dataset. In the next cell, we checked if the dataset contains any NULL value or not. Finally, we print the shape of our dataset.</p>
+<p>Let's now print the first 5 rows of the dataset using the head() method.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[253]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Print first 5 rows</span>
+<span class="n">movie_reviews</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[253]:</div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>review</th>
+      <th>sentiment</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>One of the other reviewers has mentioned that ...</td>
+      <td>positive</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>A wonderful little production. &lt;br /&gt;&lt;br /&gt;The...</td>
+      <td>positive</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>I thought this was a wonderful way to spend ti...</td>
+      <td>positive</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Basically there's a family where a little boy ...</td>
+      <td>negative</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Petter Mattei's "Love in the Time of Money" is...</td>
+      <td>positive</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Note: Let's now take a look at any one of the reviews so that we have an idea about the text that we are going to process. Look at the following script.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[254]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Print any review from the dataset</span>
+<span class="n">movie_reviews</span><span class="p">[</span><span class="s2">&quot;review&quot;</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[254]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>&#34;Basically there&#39;s a family where a little boy (Jake) thinks there&#39;s a zombie in his closet &amp; his parents are fighting all the time.&lt;br /&gt;&lt;br /&gt;This movie is slower than a soap opera... and suddenly, Jake decides to become Rambo and kill the zombie.&lt;br /&gt;&lt;br /&gt;OK, first of all when you&#39;re going to make a film you must Decide if its a thriller or a drama! As a drama the movie is watchable. Parents are divorcing &amp; arguing like in real life. And then we have Jake with his closet which totally ruins all the film! I expected to see a BOOGEYMAN similar movie, and instead i watched a drama with some meaningless thriller spots.&lt;br /&gt;&lt;br /&gt;3 out of 10 just for the well playing parents &amp; descent dialogs. As for the shots with Jake: just ignore them.&#34;</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Note: You can see that our text contains punctuations, brackets, and a few HTML tags as well. We will preprocess this text in the next section.</p>
+<p>Finally, let's see the distribution of positive and negative sentiments in our dataset.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[255]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Check the distribution of positive and negative sentiments in our dataset</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;sentiment&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">movie_reviews</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[255]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>&lt;AxesSubplot: xlabel=&#39;sentiment&#39;, ylabel=&#39;count&#39;&gt;</pre>
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedImage jp-OutputArea-output ">
+<img src="data:image/png;base64,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s9eHhoaqtLRUBQUFHvWHDh1SaGioXfPLb9NVLP9ejdPpVFBQkBo3bqxatWqdt6ZiDgAA8Ofm1dBkWZYSExO1fPlyff7552rZsqXHeJcuXXTFFVcoIyPDXpeTk6O8vDxFR0dLkqKjo7Vr1y6Pb7mlp6fL6XSqQ4cOds25c1TUVMzh7++vLl26eNSUl5crIyPDrgEAAH9uXr08l5CQoKVLl+rDDz9U/fr17fuHXC6XgoKC5HK5FB8fr6SkJDVs2FBOp1OPPPKIoqOj1a1bN0lS//791aFDB91///2aMWOG8vPzNWXKFCUkJNiXz8aMGaOXX35ZTzzxhB566CF9/vnneuedd7Ry5Uq7l6SkJI0YMUI33nijbrrpJs2ePVvFxcUaOXLkpT8wAADA53g1NM2bN0+S1Lt3b4/1Cxcu1IMPPihJmjVrlvz8/DRkyBCVlJQoNjZWr7zyil1bq1YtrVixQmPHjlV0dLTq1q2rESNG6Omnn7ZrWrZsqZUrV2rChAmaM2eOmjVrpgULFig2NtauGTp0qI4cOaLk5GTl5+erU6dOSktLq3RzOAAA+HPyqec01WQX8pyHP4LnNAGV8Zwm4PLFc5oAAABqGEITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAa+GpnXr1umOO+5QWFiYHA6HPvjgA4/xBx98UA6Hw+M1YMAAj5pjx44pLi5OTqdTDRo0UHx8vIqKijxqdu7cqVtuuUWBgYEKDw/XjBkzKvXy7rvvql27dgoMDFRkZKQ+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HxISYo/l5+crODjYY7x27dpq2LChR8355jh3G79WUzF+PikpKXK5XPYrPDz8QncRAADUID4bmnzd5MmTVVhYaL9++OEHb7cEAAAuIp8NTaGhoZKkQ4cOeaw/dOiQPRYaGqrDhw97jJ89e1bHjh3zqDnfHOdu49dqKsbPJyAgQE6n0+MFAAAuXz4bmlq2bKnQ0FBlZGTY69xutzZv3qzo6GhJUnR0tAoKCpSdnW3XfP755yovL1dUVJRds27dOp05c8auSU9PV9u2bXXllVfaNedup6KmYjsAAABeDU1FRUXavn27tm/fLunnm7+3b9+uvLw8ORwOjR8/Xs8++6w++ugj7dq1Sw888IDCwsLsb9i1b99eAwYM0OjRo7VlyxZt2LBBiYmJGjZsmMLCwiRJ9913n/z9/RUfH689e/Zo2bJlmjNnjpKSkuw+Hn30UaWlpWnmzJnau3evpk2bpq1btyoxMfFSHxIAAOCjantz41u3blWfPn3s5YogM2LECKWmpuqJJ55QcXGxHn74YRUUFOjmm29WWlqaAgMD7fcsWbJEiYmJ6tevn/z8/DRkyBD9/e9/t8ddLpdWr16thIQEdenSRY0bN1ZycrLHs5y6d++upUuXasqUKfrP//xPtWnTRh988IGuu+66S3AUAABATeAzz2mq6XhOE+A9PKcJuHzxnCYAAIAahtAEAABggNAEAABggNAEAABggNAEAABggNAEAABggNAEAABggNAEAABggNAEAABggNAEAABggNAEAABggNAEAABggNAEAABggNAEAABggNAEAABggNAEAABggNAEAABggNAEAABggNAEAABggNAEAABggNAEAABggNAEAABggNAEAABggNAEAABggNAEAABggNAEAABggNAEAABggNAEAABggNAEAABggNAEAABggNAEAABggNAEAABggNAEAABggNAEAABggNAEAABggNAEAABggNAEAABggNAEAABggNAEAABggNAEAABggNAEAABggNAEAABggNAEAABggNAEAABggNAEAABggNAEAABggNAEAABggNAEAABggNAEAABggNAEAABggNAEAABggNAEAABggNAEAABggNAEAABggNAEAABggNAEAABggNAEAABggNAEAABggNAEAABggNAEAABgwKdD07Rp0+RwODxe7dq1s8dPnz6thIQENWrUSPXq1dOQIUN06NAhjzny8vI0aNAg1alTR8HBwZo4caLOnj3rUbN27Vp17txZAQEBat26tVJTUy/F7gEAgBrEp0OTJF177bU6ePCg/Vq/fr09NmHCBH388cd69913lZmZqQMHDujuu++2x8vKyjRo0CCVlpZq48aNWrRokVJTU5WcnGzX5ObmatCgQerTp4+2b9+u8ePHa9SoUVq1atUl3U8AAODbanu7gd9Tu3ZthYaGVlpfWFioN954Q0uXLlXfvn0lSQsXLlT79u21adMmdevWTatXr9bXX3+tzz77TCEhIerUqZOeeeYZTZo0SdOmTZO/v7/mz5+vli1baubMmZKk9u3ba/369Zo1a5ZiY2N/ta+SkhKVlJTYy263u5r3HAAA+BKfP9O0b98+hYWF6eqrr1ZcXJzy8vIkSdnZ2Tpz5oxiYmLs2nbt2ql58+bKysqSJGVlZSkyMlIhISF2TWxsrNxut/bs2WPXnDtHRU3FHL8mJSVFLpfLfoWHh1fL/gIAAN/k06EpKipKqampSktL07x585Sbm6tbbrlFJ06cUH5+vvz9/dWgQQOP94SEhCg/P1+SlJ+f7xGYKsYrxn6rxu1269SpU7/a2+TJk1VYWGi/fvjhhz+6uwAAwIf59OW52267zf75+uuvV1RUlCIiIvTOO+8oKCjIi51JAQEBCggI8GoPAADg0vHpM02/1KBBA11zzTX69ttvFRoaqtLSUhUUFHjUHDp0yL4HKjQ0tNK36SqWf6/G6XR6PZgBAADfUaNCU1FRkfbv36+mTZuqS5cuuuKKK5SRkWGP5+TkKC8vT9HR0ZKk6Oho7dq1S4cPH7Zr0tPT5XQ61aFDB7vm3DkqairmAAAAkHw8ND3++OPKzMzU999/r40bN+quu+5SrVq1NHz4cLlcLsXHxyspKUlr1qxRdna2Ro4cqejoaHXr1k2S1L9/f3Xo0EH333+/duzYoVWrVmnKlClKSEiwL62NGTNG3333nZ544gnt3btXr7zyit555x1NmDDBm7sOAAB8jE/f0/Tjjz9q+PDhOnr0qJo0aaKbb75ZmzZtUpMmTSRJs2bNkp+fn4YMGaKSkhLFxsbqlVdesd9fq1YtrVixQmPHjlV0dLTq1q2rESNG6Omnn7ZrWrZsqZUrV2rChAmaM2eOmjVrpgULFvzm4wYAAMCfj8OyLMvbTVwO3G63XC6XCgsL5XQ6L9p2ukxcfNHmBmqq7Bce8HYL1SLv6UhvtwD4nObJuy7q/Bfy+9unL88BAAD4CkITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAUITAACAAULTL8ydO1ctWrRQYGCgoqKitGXLFm+3BAAAfACh6RzLli1TUlKSpk6dqm3btqljx46KjY3V4cOHvd0aAADwMkLTOV588UWNHj1aI0eOVIcOHTR//nzVqVNHb775prdbAwAAXlbb2w34itLSUmVnZ2vy5Mn2Oj8/P8XExCgrK6tSfUlJiUpKSuzlwsJCSZLb7b6ofZaVnLqo8wM10cX+3F0qJ06XebsFwOdc7M93xfyWZf1uLaHp//z0008qKytTSEiIx/qQkBDt3bu3Un1KSoqmT59eaX14ePhF6xHA+bleGuPtFgBcLCmuS7KZEydOyOX67W0Rmqpo8uTJSkpKspfLy8t17NgxNWrUSA6Hw4ud4VJwu90KDw/XDz/8IKfT6e12AFQjPt9/LpZl6cSJEwoLC/vdWkLT/2ncuLFq1aqlQ4cOeaw/dOiQQkNDK9UHBAQoICDAY12DBg0uZovwQU6nk/+pApcpPt9/Hr93hqkCN4L/H39/f3Xp0kUZGRn2uvLycmVkZCg6OtqLnQEAAF/AmaZzJCUlacSIEbrxxht10003afbs2SouLtbIkSO93RoAAPAyQtM5hg4dqiNHjig5OVn5+fnq1KmT0tLSKt0cDgQEBGjq1KmVLtECqPn4fOPXOCyT79gBAAD8yXFPEwAAgAFCEwAAgAFCEwAAgAFCE3AB1q5dK4fDoYKCgt+sa9GihWbPnn1JegLgPdOmTVOnTp283QYuEW4EBy5AaWmpjh07ppCQEDkcDqWmpmr8+PGVQtSRI0dUt25d1alTxzuNAqh2DodDy5cv1+DBg+11RUVFKikpUaNGjbzXGC4ZHjkAXAB/f//zPiH+l5o0aXIJugHgbfXq1VO9evW83QYuES7P4bLTu3dvJSYmKjExUS6XS40bN9ZTTz1l/wXr48eP64EHHtCVV16pOnXq6LbbbtO+ffvs9//rX//SHXfcoSuvvFJ169bVtddeq08++USS5+W5tWvXauTIkSosLJTD4ZDD4dC0adMkeV6eu++++zR06FCPHs+cOaPGjRtr8eLFkn5++nxKSopatmypoKAgdezYUe+9995FPlJAzdC7d2+NGzdOTzzxhBo2bKjQ0FD7syZJBQUFGjVqlJo0aSKn06m+fftqx44dHnM8++yzCg4OVv369TVq1Cg9+eSTHpfVvvzyS916661q3LixXC6XevXqpW3bttnjLVq0kCTdddddcjgc9vK5l+dWr16twMDASmeeH330UfXt29deXr9+vW655RYFBQUpPDxc48aNU3Fx8R8+Trj4CE24LC1atEi1a9fWli1bNGfOHL344otasGCBJOnBBx/U1q1b9dFHHykrK0uWZWngwIE6c+aMJCkhIUElJSVat26ddu3apeeff/68/5Ls3r27Zs+eLafTqYMHD+rgwYN6/PHHK9XFxcXp448/VlFRkb1u1apVOnnypO666y5JUkpKihYvXqz58+drz549mjBhgv76178qMzPzYhweoMZZtGiR6tatq82bN2vGjBl6+umnlZ6eLkm69957dfjwYX366afKzs5W586d1a9fPx07dkyStGTJEj333HN6/vnnlZ2drebNm2vevHke8584cUIjRozQ+vXrtWnTJrVp00YDBw7UiRMnJP0cqiRp4cKFOnjwoL18rn79+qlBgwZ6//337XVlZWVatmyZ4uLiJEn79+/XgAEDNGTIEO3cuVPLli3T+vXrlZiYWP0HDdXPAi4zvXr1stq3b2+Vl5fb6yZNmmS1b9/e+uc//2lJsjZs2GCP/fTTT1ZQUJD1zjvvWJZlWZGRkda0adPOO/eaNWssSdbx48cty7KshQsXWi6Xq1JdRESENWvWLMuyLOvM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"
+class="
+"
+>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Note: From the output, it is clear that the dataset contains equal number of positive and negative reviews</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Data-Preprocessing">Data Preprocessing<a class="anchor-link" href="#Data-Preprocessing">&#182;</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Note: We saw that our dataset contained punctuations and HTML tags. In this section we will define a function that takes a text string as a parameter and then performs preprocessing on the string to remove special characters and HTML tags from the string. Finally, the string is returned to the calling function. Look at the following script:</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[256]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Define a function that takes a text string as a parameter and then performs preprocessing on the string </span>
+<span class="c1"># to remove special characters and HTML tags from the string</span>
+<span class="k">def</span> <span class="nf">preprocess_text</span><span class="p">(</span><span class="n">sen</span><span class="p">):</span>
+    <span class="c1"># Removing html tags</span>
+    <span class="n">sentence</span> <span class="o">=</span> <span class="n">remove_tags</span><span class="p">(</span><span class="n">sen</span><span class="p">)</span>
+
+    <span class="c1"># Remove punctuations and numbers</span>
+    <span class="n">sentence</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;[^a-zA-Z]&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">sentence</span><span class="p">)</span>
+
+    <span class="c1"># Single character removal</span>
+    <span class="n">sentence</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\s+[a-zA-Z]\s+&quot;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">sentence</span><span class="p">)</span>
+
+    <span class="c1"># Removing multiple spaces</span>
+    <span class="n">sentence</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\s+&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">sentence</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">sentence</span>
+
+<span class="n">TAG_RE</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;&lt;[^&gt;]+&gt;&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">remove_tags</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">TAG_RE</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Note: In the preprocess_text() method the first step is to remove the HTML tags. To remove the HTML tags, remove_tags() function has been defined. The remove_tags function simply replaces anything between opening and closing &lt;&gt; with an empty space.</p>
+<p>Next, in the preprocess_text function, everything is removed except capital and small English letters, which results in single characters that make no sense. For instance, when you remove apostrophe from the word &quot;Mark's&quot;, the apostrophe is replaced by an empty space. Hence, we are left with single character &quot;s&quot;.</p>
+<p>Next, we remove all the single characters and replace it by a space which creates multiple spaces in our text. Finally, we remove the multiple spaces from our text as well.</p>
+<p>Next, we will preprocess our reviews and will store them in a new list as shown below:</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[257]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Applying the above function to the review column</span>
+<span class="n">X</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">sentences</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">movie_reviews</span><span class="p">[</span><span class="s1">&#39;review&#39;</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">sen</span> <span class="ow">in</span> <span class="n">sentences</span><span class="p">:</span>
+    <span class="n">X</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">preprocess_text</span><span class="p">(</span><span class="n">sen</span><span class="p">))</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Let's now again see the fourth review:</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[258]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Print the same review</span>
+<span class="n">X</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[258]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>&#39;Basically there a family where little boy Jake thinks there a zombie in his closet his parents are fighting all the time This movie is slower than soap opera and suddenly Jake decides to become Rambo and kill the zombie OK first of all when you re going to make film you must Decide if its thriller or drama As drama the movie is watchable Parents are divorcing arguing like in real life And then we have Jake with his closet which totally ruins all the film expected to see BOOGEYMAN similar movie and instead watched drama with some meaningless thriller spots out of just for the well playing parents descent dialogs As for the shots with Jake just ignore them &#39;</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Note: From the output, you can see that the HTML tags, punctuations and numbers have been removed. We are only left with the alphabets.</p>
+<p>Next, we need to convert our labels into digits. Since we only have two labels in the output i.e. &quot;positive&quot; and &quot;negative&quot;. We can simply convert them into integers by replacing &quot;positive&quot; with digit 1 and negative with digit 0 as shown below:</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[259]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">movie_reviews</span><span class="p">[</span><span class="s1">&#39;sentiment&#39;</span><span class="p">]</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">x</span><span class="o">==</span><span class="s2">&quot;positive&quot;</span> <span class="k">else</span> <span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="p">)))</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Splitting-the-dataset-into-train-and-test-dataset">Splitting the dataset into train and test dataset<a class="anchor-link" href="#Splitting-the-dataset-into-train-and-test-dataset">&#182;</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Finally, we need to divide our dataset into train and test sets. The train set will be used to train our deep learning models while the test set will be used to evaluate how well our model performs.
+We can use train_test_split method from the sklearn.model.selection module, as shown below:</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[260]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Splitting the dataset</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.20</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Note: The script above divides our data into 80% for the training set and 20% for the testing set.</p>
+<p>Let's now write the script for our embedding layer. The embedding layer converts our textual data into numeric data and is used as the first layer for the deep learning models in Keras.</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Preparing-the-Embedding-Layer">Preparing the Embedding Layer<a class="anchor-link" href="#Preparing-the-Embedding-Layer">&#182;</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Note: As a first step, we will use the Tokenizer class from the keras.preprocessing.text module to create a word-to-index dictionary. In the word-to-index dictionary, each word in the corpus is used as a key, while a corresponding unique index is used as the value for the key. Execute the following script:</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[261]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Creating tokenizer</span>
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">(</span><span class="n">num_words</span><span class="o">=</span><span class="mi">5000</span><span class="p">)</span>
+<span class="n">tokenizer</span><span class="o">.</span><span class="n">fit_on_texts</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">texts_to_sequences</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">texts_to_sequences</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Note: If you view the X_train variable in variable explorer, you will see that it contains 40,000 lists where each list contains integers. Each list actually corresponds to each sentence in the training set. You will also notice that the size of each list is different. This is because sentences have different lengths.</p>
+<p>We set the maximum size of each list to 100. You can try a different size. The lists with size greater than 100 will be truncated to 100. For the lists that have length less than 100, we will add 0 at the end of the list until it reaches the max length. This process is called padding.</p>
+<p>The following script finds the vocabulary size and then perform padding on both train and test set.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[262]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Find the vocabulary size and then perform padding on both train and test set</span>
+<span class="c1"># Adding 1 because of reserved 0 index</span>
+<span class="n">vocab_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">word_index</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="n">maxlen</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">pad_sequences</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;post&#39;</span><span class="p">,</span> <span class="n">maxlen</span><span class="o">=</span><span class="n">maxlen</span><span class="p">)</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">pad_sequences</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;post&#39;</span><span class="p">,</span> <span class="n">maxlen</span><span class="o">=</span><span class="n">maxlen</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Note: Now if you view the X_train or X_test, you will see that all the lists have same length i.e. 100. Also, the vocabulary_size variable now contains a value 92547 which means that our corpus has 92547 unique words.</p>
+<p>We will use GloVe embeddings to create our feature matrix. In the following script we load the GloVe word embeddings and create a dictionary that will contain words as keys and their corresponding embedding list as values.
+(glove.6B.100d.txt is available at <a href="https://www.kaggle.com/datasets/danielwillgeorge/glove6b100dtxt">https://www.kaggle.com/datasets/danielwillgeorge/glove6b100dtxt</a>)</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[263]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># We will use GloVe embeddings to create our feature matrix</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">array</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">asarray</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">zeros</span>
+
+<span class="n">embeddings_dictionary</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+<span class="n">glove_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;glove.6B.100d.txt&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf8&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">glove_file</span><span class="p">:</span>
+    <span class="n">records</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+    <span class="n">word</span> <span class="o">=</span> <span class="n">records</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">vector_dimensions</span> <span class="o">=</span> <span class="n">asarray</span><span class="p">(</span><span class="n">records</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float32&#39;</span><span class="p">)</span>
+    <span class="n">embeddings_dictionary</span> <span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">=</span> <span class="n">vector_dimensions</span>
+<span class="n">glove_file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Note: Finally, we will create an embedding matrix where each row number will correspond to the index of the word in the corpus. The matrix will have 100 columns where each column will contain the GloVe word embeddings for the words in our corpus.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[264]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">embedding_matrix</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">((</span><span class="n">vocab_size</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">word</span><span class="p">,</span> <span class="n">index</span> <span class="ow">in</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">word_index</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">embedding_vector</span> <span class="o">=</span> <span class="n">embeddings_dictionary</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">embedding_vector</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">embedding_matrix</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">embedding_vector</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[265]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Embedding matrix shape</span>
+<span class="n">embedding_matrix</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[265]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>(92547, 100)</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Note: Once you execute the above script, you will see that embedding_matrix will contain 92547 rows (one for each word in the corpus). Now we are ready to create our deep learning models.</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="We-start-building-our-DL-Models-from-here">We start building our DL Models from here<a class="anchor-link" href="#We-start-building-our-DL-Models-from-here">&#182;</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>We will define a set of models all based on the same structure ( Embedding layer -&gt; Recurring layer -&gt; Dense layer -&gt; Dense output layer ). All the hidden layers will utilize a ReLU activation function and will have a kernel initialized with a He normal initialization. The output layer will use a sigmoid function and will be initialized with a Glorot normal initialization.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[266]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Importing the libraries</span>
+<span class="kn">from</span> <span class="nn">keras.callbacks</span> <span class="kn">import</span> <span class="n">EarlyStopping</span><span class="p">,</span> <span class="n">TensorBoard</span>
+<span class="kn">from</span> <span class="nn">keras.layers</span> <span class="kn">import</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">LSTM</span><span class="p">,</span> <span class="n">GRU</span>
+<span class="kn">import</span> <span class="nn">keras</span>
+<span class="kn">from</span> <span class="nn">numpy.random</span> <span class="kn">import</span> <span class="n">seed</span>
+
+<span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[267]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Define a function that creates LSTM and GRU models</span>
+<span class="k">def</span> <span class="nf">create_model</span><span class="p">(</span><span class="n">model_type</span><span class="p">,</span> <span class="n">layer_size</span><span class="p">,</span> <span class="n">learning_rate</span><span class="p">,</span> <span class="n">embedding_layer</span><span class="p">):</span>
+    <span class="c1"># Create a sequential model</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
+
+    <span class="c1"># Add an embedding layer</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">embedding_layer</span><span class="p">)</span>
+
+    <span class="c1"># Add an either LSTM or GRU layer based on model type</span>
+    <span class="k">if</span> <span class="n">model_type</span> <span class="o">==</span> <span class="s1">&#39;LSTM&#39;</span><span class="p">:</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">LSTM</span><span class="p">(</span><span class="n">layer_size</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">,</span> <span class="n">kernel_initializer</span><span class="o">=</span><span class="n">keras</span><span class="o">.</span><span class="n">initializers</span><span class="o">.</span><span class="n">HeNormal</span><span class="p">()))</span>
+    <span class="k">elif</span> <span class="n">model_type</span> <span class="o">==</span> <span class="s1">&#39;GRU&#39;</span><span class="p">:</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">GRU</span><span class="p">(</span><span class="n">layer_size</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">,</span> <span class="n">kernel_initializer</span><span class="o">=</span><span class="n">keras</span><span class="o">.</span><span class="n">initializers</span><span class="o">.</span><span class="n">HeNormal</span><span class="p">()))</span>
+
+    <span class="c1"># Add Dense Layer</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="n">layer_size</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">,</span> <span class="n">kernel_initializer</span><span class="o">=</span><span class="n">keras</span><span class="o">.</span><span class="n">initializers</span><span class="o">.</span><span class="n">HeNormal</span><span class="p">()))</span>
+
+    <span class="c1"># Add Dropout Layer</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;sigmoid&#39;</span><span class="p">,</span> <span class="n">kernel_initializer</span><span class="o">=</span><span class="n">keras</span><span class="o">.</span><span class="n">initializers</span><span class="o">.</span><span class="n">GlorotNormal</span><span class="p">()))</span>
+
+    <span class="c1"># Define the optimizer</span>
+    <span class="n">opt</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">learning_rate</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">)</span>
+
+    <span class="c1"># Compile the model</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;binary_crossentropy&#39;</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="n">opt</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">,</span><span class="s1">&#39;AUC&#39;</span><span class="p">])</span>
+    
+    <span class="k">return</span> <span class="n">model</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[268]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create embedding layer</span>
+<span class="n">embedding_layer</span> <span class="o">=</span> <span class="n">Embedding</span><span class="p">(</span><span class="n">vocab_size</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="p">[</span><span class="n">embedding_matrix</span><span class="p">],</span> <span class="n">input_length</span><span class="o">=</span><span class="n">maxlen</span> <span class="p">,</span> <span class="n">trainable</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h4 id="Creating-our-Models">Creating our Models<a class="anchor-link" href="#Creating-our-Models">&#182;</a></h4>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Models are created and named with the following pattern &quot;model_ {number of neurons in recursive and dense layer} _ {type of recursive layer used} _ {batch size that will be utilized during training}&quot;</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[269]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Naming our models</span>
+<span class="c1"># model_{layer size}_{model type}_{batch size}</span>
+
+<span class="c1"># Checking if our models exist in &quot;model&quot; folder </span>
+<span class="c1"># If yes, load them else create them</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s1">&#39;models&#39;</span><span class="p">):</span>
+    <span class="c1"># GRU Models</span>
+    <span class="n">model_128_GRU_128</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s1">&#39;models/model_128_GRU_128&#39;</span><span class="p">)</span>
+    <span class="n">model_128_GRU_64</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s1">&#39;models/model_128_GRU_64&#39;</span><span class="p">)</span>
+    <span class="n">model_128_GRU_32</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s1">&#39;models/model_128_GRU_32&#39;</span><span class="p">)</span>
+    <span class="n">model_64_GRU_128</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s1">&#39;models/model_64_GRU_128&#39;</span><span class="p">)</span>
+    <span class="n">model_64_GRU_64</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s1">&#39;models/model_64_GRU_64&#39;</span><span class="p">)</span>
+    <span class="n">model_64_GRU_32</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s1">&#39;models/model_64_GRU_32&#39;</span><span class="p">)</span>
+    <span class="n">model_32_GRU_128</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s1">&#39;models/model_32_GRU_128&#39;</span><span class="p">)</span>
+    <span class="n">model_32_GRU_64</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s1">&#39;models/model_32_GRU_64&#39;</span><span class="p">)</span>
+    <span class="n">model_32_GRU_32</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s1">&#39;models/model_32_GRU_32&#39;</span><span class="p">)</span>
+
+    <span class="c1"># LSTM Models</span>
+    <span class="n">model_128_LSTM_128</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s1">&#39;models/model_128_LSTM_128&#39;</span><span class="p">)</span>
+    <span class="n">model_128_LSTM_64</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s1">&#39;models/model_128_LSTM_64&#39;</span><span class="p">)</span>
+    <span class="n">model_128_LSTM_32</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s1">&#39;models/model_128_LSTM_32&#39;</span><span class="p">)</span>
+    <span class="n">model_64_LSTM_128</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s1">&#39;models/model_64_LSTM_128&#39;</span><span class="p">)</span>
+    <span class="n">model_64_LSTM_64</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s1">&#39;models/model_64_LSTM_64&#39;</span><span class="p">)</span>
+    <span class="n">model_64_LSTM_32</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s1">&#39;models/model_64_LSTM_32&#39;</span><span class="p">)</span>
+    <span class="n">model_32_LSTM_128</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s1">&#39;models/model_32_LSTM_128&#39;</span><span class="p">)</span>
+    <span class="n">model_32_LSTM_64</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s1">&#39;models/model_32_LSTM_64&#39;</span><span class="p">)</span>
+    <span class="n">model_32_LSTM_32</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s1">&#39;models/model_32_LSTM_32&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># Creating GRU Models using the function created above with</span>
+    <span class="c1"># First Parameter - Model type</span>
+    <span class="c1"># Second Parameter - Layer size</span>
+    <span class="c1"># Third Parameter - Learning rate</span>
+    <span class="c1"># Fourth Parameter - Embedding layer</span>
+    <span class="n">model_128_GRU_128</span> <span class="o">=</span> <span class="n">create_model</span><span class="p">(</span><span class="s1">&#39;GRU&#39;</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mf">0.0001</span><span class="p">,</span> <span class="n">embedding_layer</span><span class="p">)</span>
+    <span class="n">model_128_GRU_64</span> <span class="o">=</span> <span class="n">create_model</span><span class="p">(</span><span class="s1">&#39;GRU&#39;</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mf">0.0001</span><span class="p">,</span> <span class="n">embedding_layer</span><span class="p">)</span>
+    <span class="n">model_128_GRU_32</span> <span class="o">=</span> <span class="n">create_model</span><span class="p">(</span><span class="s1">&#39;GRU&#39;</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mf">0.0001</span><span class="p">,</span> <span class="n">embedding_layer</span><span class="p">)</span>
+    <span class="n">model_64_GRU_128</span> <span class="o">=</span> <span class="n">create_model</span><span class="p">(</span><span class="s1">&#39;GRU&#39;</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mf">0.0001</span><span class="p">,</span> <span class="n">embedding_layer</span><span class="p">)</span>
+    <span class="n">model_64_GRU_64</span> <span class="o">=</span> <span class="n">create_model</span><span class="p">(</span><span class="s1">&#39;GRU&#39;</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mf">0.0001</span><span class="p">,</span> <span class="n">embedding_layer</span><span class="p">)</span>
+    <span class="n">model_64_GRU_32</span> <span class="o">=</span> <span class="n">create_model</span><span class="p">(</span><span class="s1">&#39;GRU&#39;</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mf">0.0001</span><span class="p">,</span> <span class="n">embedding_layer</span><span class="p">)</span>
+    <span class="n">model_32_GRU_128</span> <span class="o">=</span> <span class="n">create_model</span><span class="p">(</span><span class="s1">&#39;GRU&#39;</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mf">0.0001</span><span class="p">,</span> <span class="n">embedding_layer</span><span class="p">)</span>
+    <span class="n">model_32_GRU_64</span> <span class="o">=</span> <span class="n">create_model</span><span class="p">(</span><span class="s1">&#39;GRU&#39;</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mf">0.0001</span><span class="p">,</span> <span class="n">embedding_layer</span><span class="p">)</span>
+    <span class="n">model_32_GRU_32</span> <span class="o">=</span> <span class="n">create_model</span><span class="p">(</span><span class="s1">&#39;GRU&#39;</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mf">0.0001</span><span class="p">,</span> <span class="n">embedding_layer</span><span class="p">)</span>
+
+    <span class="c1"># Creating LSTM Models using the function created above with</span>
+    <span class="c1"># First Parameter - Model type</span>
+    <span class="c1"># Second Parameter - Layer size</span>
+    <span class="c1"># Third Parameter - Learning rate</span>
+    <span class="c1"># Fourth Parameter - Embedding layer</span>
+    <span class="n">model_128_LSTM_128</span> <span class="o">=</span> <span class="n">create_model</span><span class="p">(</span><span class="s1">&#39;LSTM&#39;</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mf">0.0001</span><span class="p">,</span> <span class="n">embedding_layer</span><span class="p">)</span>
+    <span class="n">model_128_LSTM_64</span> <span class="o">=</span> <span class="n">create_model</span><span class="p">(</span><span class="s1">&#39;LSTM&#39;</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mf">0.0001</span><span class="p">,</span> <span class="n">embedding_layer</span><span class="p">)</span>
+    <span class="n">model_128_LSTM_32</span> <span class="o">=</span> <span class="n">create_model</span><span class="p">(</span><span class="s1">&#39;LSTM&#39;</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mf">0.0001</span><span class="p">,</span> <span class="n">embedding_layer</span><span class="p">)</span>
+    <span class="n">model_64_LSTM_128</span> <span class="o">=</span> <span class="n">create_model</span><span class="p">(</span><span class="s1">&#39;LSTM&#39;</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mf">0.0001</span><span class="p">,</span> <span class="n">embedding_layer</span><span class="p">)</span>
+    <span class="n">model_64_LSTM_64</span> <span class="o">=</span> <span class="n">create_model</span><span class="p">(</span><span class="s1">&#39;LSTM&#39;</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mf">0.0001</span><span class="p">,</span> <span class="n">embedding_layer</span><span class="p">)</span>
+    <span class="n">model_64_LSTM_32</span><span class="o">=</span> <span class="n">create_model</span><span class="p">(</span><span class="s1">&#39;LSTM&#39;</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mf">0.0001</span><span class="p">,</span> <span class="n">embedding_layer</span><span class="p">)</span>
+    <span class="n">model_32_LSTM_128</span> <span class="o">=</span> <span class="n">create_model</span><span class="p">(</span><span class="s1">&#39;LSTM&#39;</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mf">0.0001</span><span class="p">,</span> <span class="n">embedding_layer</span><span class="p">)</span>
+    <span class="n">model_32_LSTM_64</span> <span class="o">=</span> <span class="n">create_model</span><span class="p">(</span><span class="s1">&#39;LSTM&#39;</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mf">0.0001</span><span class="p">,</span> <span class="n">embedding_layer</span><span class="p">)</span>
+    <span class="n">model_32_LSTM_32</span> <span class="o">=</span> <span class="n">create_model</span><span class="p">(</span><span class="s1">&#39;LSTM&#39;</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mf">0.0001</span><span class="p">,</span> <span class="n">embedding_layer</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
+WARNING:tensorflow:Layer gru_1 will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
+WARNING:tensorflow:Layer gru_2 will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
+WARNING:tensorflow:Layer gru_3 will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
+WARNING:tensorflow:Layer gru_4 will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
+WARNING:tensorflow:Layer gru_5 will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
+WARNING:tensorflow:Layer gru_6 will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
+WARNING:tensorflow:Layer gru_7 will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
+WARNING:tensorflow:Layer gru_8 will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
+WARNING:tensorflow:Layer lstm_13 will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
+WARNING:tensorflow:Layer lstm_14 will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
+WARNING:tensorflow:Layer lstm_15 will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
+WARNING:tensorflow:Layer lstm_16 will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
+WARNING:tensorflow:Layer lstm_17 will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
+WARNING:tensorflow:Layer lstm_18 will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
+WARNING:tensorflow:Layer lstm_19 will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
+WARNING:tensorflow:Layer lstm_20 will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
+WARNING:tensorflow:Layer lstm_21 will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h4 id="Fitting-our-Models">Fitting our Models<a class="anchor-link" href="#Fitting-our-Models">&#182;</a></h4>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Fitting the models is proven very computationally expensive (In an environment utilizing GPU it required almost 20 hours), for this reason we will save the models and their training history, and avoid the fitting process if the models are already present in the 'models' folder.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[270]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Naming the histories</span>
+<span class="c1"># history_{layer size}_{model type}_{batch size}</span>
+
+<span class="c1"># Checking if histories exist in &quot;history&quot; folder </span>
+<span class="c1"># If yes, load them else create them</span>
+
+<span class="kn">import</span> <span class="nn">pickle</span>
+<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s1">&#39;histories&#39;</span><span class="p">):</span>
+    <span class="c1"># GRU Histories</span>
+    <span class="n">history_128_GRU_128</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;histories/history_128_GRU_128&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">))</span>
+    <span class="n">history_128_GRU_64</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;histories/history_128_GRU_64&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">))</span>
+    <span class="n">history_128_GRU_32</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;histories/history_128_GRU_32&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">))</span>
+    <span class="n">history_64_GRU_128</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;histories/history_64_GRU_128&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">))</span>
+    <span class="n">history_64_GRU_64</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;histories/history_64_GRU_64&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">))</span>
+    <span class="n">history_64_GRU_32</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;histories/history_64_GRU_32&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">))</span>
+    <span class="n">history_32_GRU_128</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;histories/history_32_GRU_128&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">))</span>
+    <span class="n">history_32_GRU_64</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;histories/history_32_GRU_64&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">))</span>
+    <span class="n">history_32_GRU_32</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;histories/history_32_GRU_32&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">))</span>
+    
+    <span class="c1"># LSTM Histories</span>
+    <span class="n">history_128_LSTM_128</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;histories/history_128_LSTM_128&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">))</span>
+    <span class="n">history_128_LSTM_64</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;histories/history_128_LSTM_64&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">))</span>
+    <span class="n">history_128_LSTM_32</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;histories/history_128_LSTM_32&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">))</span>
+    <span class="n">history_64_LSTM_128</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;histories/history_64_LSTM_128&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">))</span>
+    <span class="n">history_64_LSTM_64</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;histories/history_64_LSTM_64&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">))</span>
+    <span class="n">history_64_LSTM_32</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;histories/history_64_LSTM_32&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">))</span>
+    <span class="n">history_32_LSTM_128</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;histories/history_32_LSTM_128&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">))</span>
+    <span class="n">history_32_LSTM_64</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;histories/history_32_LSTM_64&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">))</span>
+    <span class="n">history_32_LSTM_32</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;histories/history_32_LSTM_32&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">))</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># Fitting GRU Models</span>
+    <span class="n">history_128_GRU_128</span> <span class="o">=</span> <span class="n">model_128_GRU_128</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">validation_split</span><span class="o">=</span><span class="mf">.2</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span>
+    <span class="n">history_128_GRU_64</span> <span class="o">=</span> <span class="n">model_128_GRU_64</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">validation_split</span><span class="o">=</span><span class="mf">.2</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span>
+    <span class="n">history_128_GRU_32</span> <span class="o">=</span> <span class="n">model_128_GRU_32</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">validation_split</span><span class="o">=</span><span class="mf">.2</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
+    <span class="n">history_64_GRU_128</span> <span class="o">=</span> <span class="n">model_64_GRU_128</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">validation_split</span><span class="o">=</span><span class="mf">.2</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span>
+    <span class="n">history_64_GRU_64</span> <span class="o">=</span> <span class="n">model_64_GRU_64</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">validation_split</span><span class="o">=</span><span class="mf">.2</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span>
+    <span class="n">history_64_GRU_32</span> <span class="o">=</span> <span class="n">model_64_GRU_32</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">validation_split</span><span class="o">=</span><span class="mf">.2</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
+    <span class="n">history_32_GRU_128</span> <span class="o">=</span> <span class="n">model_32_GRU_128</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">validation_split</span><span class="o">=</span><span class="mf">.2</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span>
+    <span class="n">history_32_GRU_64</span> <span class="o">=</span> <span class="n">model_32_GRU_64</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">validation_split</span><span class="o">=</span><span class="mf">.2</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span>
+    <span class="n">history_32_GRU_32</span> <span class="o">=</span> <span class="n">model_32_GRU_32</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">validation_split</span><span class="o">=</span><span class="mf">.2</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
+
+    <span class="c1"># Fitting LSTM Models</span>
+    <span class="n">history_128_LSTM_128</span> <span class="o">=</span> <span class="n">model_128_LSTM_128</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">validation_split</span><span class="o">=</span><span class="mf">.2</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span>
+    <span class="n">history_128_LSTM_64</span> <span class="o">=</span> <span class="n">model_128_LSTM_64</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">validation_split</span><span class="o">=</span><span class="mf">.2</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span>
+    <span class="n">history_128_LSTM_32</span> <span class="o">=</span> <span class="n">model_128_LSTM_32</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">validation_split</span><span class="o">=</span><span class="mf">.2</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
+    <span class="n">history_64_LSTM_128</span> <span class="o">=</span> <span class="n">model_64_LSTM_128</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">validation_split</span><span class="o">=</span><span class="mf">.2</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span>
+    <span class="n">history_64_LSTM_64</span> <span class="o">=</span> <span class="n">model_64_LSTM_64</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">validation_split</span><span class="o">=</span><span class="mf">.2</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span>
+    <span class="n">history_64_LSTM_32</span> <span class="o">=</span> <span class="n">model_64_LSTM_32</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">validation_split</span><span class="o">=</span><span class="mf">.2</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
+    <span class="n">history_32_LSTM_128</span> <span class="o">=</span> <span class="n">model_32_LSTM_128</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">validation_split</span><span class="o">=</span><span class="mf">.2</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span>
+    <span class="n">history_32_LSTM_64</span> <span class="o">=</span> <span class="n">model_32_LSTM_64</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">validation_split</span><span class="o">=</span><span class="mf">.2</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span>
+    <span class="n">history_32_LSTM_32</span> <span class="o">=</span> <span class="n">model_32_LSTM_32</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">validation_split</span><span class="o">=</span><span class="mf">.2</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h4 id="Saving-our-Models-and-Histories">Saving our Models and Histories<a class="anchor-link" href="#Saving-our-Models-and-Histories">&#182;</a></h4>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[271]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Saving our models in &quot;model&quot; folder</span>
+<span class="c1"># GRU Models</span>
+<span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">save_model</span><span class="p">(</span><span class="n">model_128_GRU_128</span><span class="p">,</span> <span class="s2">&quot;models/model_128_GRU_128&quot;</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">include_optimizer</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">save_model</span><span class="p">(</span><span class="n">model_128_GRU_64</span><span class="p">,</span> <span class="s2">&quot;models/model_128_GRU_64&quot;</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">include_optimizer</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">save_model</span><span class="p">(</span><span class="n">model_128_GRU_32</span><span class="p">,</span> <span class="s2">&quot;models/model_128_GRU_32&quot;</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">include_optimizer</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">save_model</span><span class="p">(</span><span class="n">model_64_GRU_128</span><span class="p">,</span> <span class="s2">&quot;models/model_64_GRU_128&quot;</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">include_optimizer</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">save_model</span><span class="p">(</span><span class="n">model_64_GRU_64</span><span class="p">,</span> <span class="s2">&quot;models/model_64_GRU_64&quot;</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">include_optimizer</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">save_model</span><span class="p">(</span><span class="n">model_64_GRU_32</span><span class="p">,</span> <span class="s2">&quot;models/model_64_GRU_32&quot;</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">include_optimizer</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">save_model</span><span class="p">(</span><span class="n">model_32_GRU_128</span><span class="p">,</span> <span class="s2">&quot;models/model_32_GRU_128&quot;</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">include_optimizer</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">save_model</span><span class="p">(</span><span class="n">model_32_GRU_64</span><span class="p">,</span> <span class="s2">&quot;models/model_32_GRU_64&quot;</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">include_optimizer</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">save_model</span><span class="p">(</span><span class="n">model_32_GRU_32</span><span class="p">,</span> <span class="s2">&quot;models/model_32_GRU_32&quot;</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">include_optimizer</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># LSTM Models</span>
+<span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">save_model</span><span class="p">(</span><span class="n">model_128_LSTM_128</span><span class="p">,</span> <span class="s2">&quot;models/model_128_LSTM_128&quot;</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">include_optimizer</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">save_model</span><span class="p">(</span><span class="n">model_128_LSTM_64</span><span class="p">,</span> <span class="s2">&quot;models/model_128_LSTM_64&quot;</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">include_optimizer</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">save_model</span><span class="p">(</span><span class="n">model_128_LSTM_32</span><span class="p">,</span> <span class="s2">&quot;models/model_128_LSTM_32&quot;</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">include_optimizer</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">save_model</span><span class="p">(</span><span class="n">model_64_LSTM_128</span><span class="p">,</span> <span class="s2">&quot;models/model_64_LSTM_128&quot;</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">include_optimizer</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">save_model</span><span class="p">(</span><span class="n">model_64_LSTM_64</span><span class="p">,</span> <span class="s2">&quot;models/model_64_LSTM_64&quot;</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">include_optimizer</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">save_model</span><span class="p">(</span><span class="n">model_64_LSTM_32</span><span class="p">,</span> <span class="s2">&quot;models/model_64_LSTM_32&quot;</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">include_optimizer</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">save_model</span><span class="p">(</span><span class="n">model_32_LSTM_128</span><span class="p">,</span> <span class="s2">&quot;models/model_32_LSTM_128&quot;</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">include_optimizer</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">save_model</span><span class="p">(</span><span class="n">model_32_LSTM_64</span><span class="p">,</span> <span class="s2">&quot;models/model_32_LSTM_64&quot;</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">include_optimizer</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">save_model</span><span class="p">(</span><span class="n">model_32_LSTM_32</span><span class="p">,</span> <span class="s2">&quot;models/model_32_LSTM_32&quot;</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">include_optimizer</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>INFO:tensorflow:Assets written to: models/model_128_GRU_128\assets
+INFO:tensorflow:Assets written to: models/model_128_GRU_64\assets
+INFO:tensorflow:Assets written to: models/model_128_GRU_32\assets
+INFO:tensorflow:Assets written to: models/model_64_GRU_128\assets
+INFO:tensorflow:Assets written to: models/model_64_GRU_64\assets
+INFO:tensorflow:Assets written to: models/model_64_GRU_32\assets
+INFO:tensorflow:Assets written to: models/model_32_GRU_128\assets
+INFO:tensorflow:Assets written to: models/model_32_GRU_64\assets
+INFO:tensorflow:Assets written to: models/model_32_GRU_32\assets
+INFO:tensorflow:Assets written to: models/model_128_LSTM_128\assets
+INFO:tensorflow:Assets written to: models/model_128_LSTM_64\assets
+INFO:tensorflow:Assets written to: models/model_128_LSTM_32\assets
+INFO:tensorflow:Assets written to: models/model_64_LSTM_128\assets
+INFO:tensorflow:Assets written to: models/model_64_LSTM_64\assets
+INFO:tensorflow:Assets written to: models/model_64_LSTM_32\assets
+INFO:tensorflow:Assets written to: models/model_32_LSTM_128\assets
+INFO:tensorflow:Assets written to: models/model_32_LSTM_64\assets
+INFO:tensorflow:Assets written to: models/model_32_LSTM_32\assets
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[272]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Creating a history list to simplifying the saving process of histories</span>
+<span class="n">histories</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="n">history_128_GRU_128</span><span class="p">,</span> <span class="s1">&#39;history_128_GRU_128&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">history_128_GRU_64</span><span class="p">,</span> <span class="s1">&#39;history_128_GRU_64&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">history_128_GRU_32</span><span class="p">,</span> <span class="s1">&#39;history_128_GRU_32&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">history_64_GRU_128</span><span class="p">,</span> <span class="s1">&#39;history_64_GRU_128&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">history_64_GRU_64</span><span class="p">,</span> <span class="s1">&#39;history_64_GRU_64&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">history_64_GRU_32</span><span class="p">,</span> <span class="s1">&#39;history_64_GRU_32&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">history_32_GRU_128</span><span class="p">,</span> <span class="s1">&#39;history_32_GRU_128&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">history_32_GRU_64</span><span class="p">,</span> <span class="s1">&#39;history_32_GRU_64&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">history_32_GRU_32</span><span class="p">,</span> <span class="s1">&#39;history_32_GRU_32&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">history_128_LSTM_128</span><span class="p">,</span> <span class="s1">&#39;history_128_LSTM_128&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">history_128_LSTM_64</span><span class="p">,</span> <span class="s1">&#39;history_128_LSTM_64&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">history_128_LSTM_32</span><span class="p">,</span> <span class="s1">&#39;history_128_LSTM_32&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">history_64_LSTM_128</span><span class="p">,</span> <span class="s1">&#39;history_64_LSTM_128&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">history_64_LSTM_64</span><span class="p">,</span> <span class="s1">&#39;history_64_LSTM_64&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">history_64_LSTM_32</span><span class="p">,</span> <span class="s1">&#39;history_64_LSTM_32&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">history_32_LSTM_128</span><span class="p">,</span> <span class="s1">&#39;history_32_LSTM_128&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">history_32_LSTM_64</span><span class="p">,</span> <span class="s1">&#39;history_32_LSTM_64&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">history_32_LSTM_32</span><span class="p">,</span> <span class="s1">&#39;history_32_LSTM_32&#39;</span><span class="p">)</span>
+<span class="p">]</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[273]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Saving the histories</span>
+<span class="k">for</span> <span class="n">history</span> <span class="ow">in</span> <span class="n">histories</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;histories/</span><span class="si">{</span><span class="n">history</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_pi</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s1">&#39;histories&#39;</span><span class="p">):</span>
+            <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">history</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">file_pi</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">history</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">history</span><span class="p">,</span> <span class="n">file_pi</span><span class="p">)</span>
+            <span class="n">history</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;histories/</span><span class="si">{</span><span class="n">history</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">))</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h4 id="Evaluating-the-results-comparing-loss-and-accuracy-with-different-variables---layer_size,-model_type,-batch_size">Evaluating the results comparing loss and accuracy with different variables - layer_size, model_type, batch_size<a class="anchor-link" href="#Evaluating-the-results-comparing-loss-and-accuracy-with-different-variables---layer_size,-model_type,-batch_size">&#182;</a></h4>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[274]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Evaluating our models</span>
+<span class="c1"># GRU Models</span>
+<span class="n">model_128_GRU_128</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">model_128_GRU_64</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">model_128_GRU_32</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">model_64_GRU_128</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">model_64_GRU_64</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">model_64_GRU_32</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">model_32_GRU_128</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">model_32_GRU_64</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">model_32_GRU_32</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># LSTM Models</span>
+<span class="n">model_128_LSTM_128</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">model_128_LSTM_64</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">model_128_LSTM_32</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">model_64_LSTM_128</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">model_64_LSTM_64</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">model_64_LSTM_32</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">model_32_LSTM_128</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">model_32_LSTM_64</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">model_32_LSTM_32</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>313/313 [==============================] - 9s 28ms/step - loss: 0.4190 - accuracy: 0.8528 - auc: 0.9295
+313/313 [==============================] - 8s 26ms/step - loss: 0.7130 - accuracy: 0.8423 - auc: 0.9052
+313/313 [==============================] - 8s 25ms/step - loss: 1.3149 - accuracy: 0.8406 - auc: 0.8835
+313/313 [==============================] - 8s 26ms/step - loss: 0.3421 - accuracy: 0.8524 - auc: 0.9362
+313/313 [==============================] - 8s 25ms/step - loss: 0.3621 - accuracy: 0.8544 - auc: 0.9348
+313/313 [==============================] - 8s 26ms/step - loss: 0.4258 - accuracy: 0.8482 - auc: 0.9305
+313/313 [==============================] - 9s 27ms/step - loss: 0.3253 - accuracy: 0.8548 - auc: 0.9354
+313/313 [==============================] - 9s 29ms/step - loss: 0.3203 - accuracy: 0.8632 - auc: 0.9393
+313/313 [==============================] - 9s 29ms/step - loss: 0.3531 - accuracy: 0.8556 - auc: 0.9363
+313/313 [==============================] - 9s 26ms/step - loss: 0.6098 - accuracy: 0.6566 - auc: 0.7227
+313/313 [==============================] - 8s 26ms/step - loss: 58.6194 - accuracy: 0.7294 - auc: 0.7667
+313/313 [==============================] - 8s 23ms/step - loss: 366.4869 - accuracy: 0.6374 - auc: 0.6945
+313/313 [==============================] - 7s 22ms/step - loss: 0.5529 - accuracy: 0.7177 - auc: 0.7927
+313/313 [==============================] - 7s 22ms/step - loss: 578666.8750 - accuracy: 0.5050 - auc: 0.5067
+313/313 [==============================] - 8s 23ms/step - loss: 0.4959 - accuracy: 0.7569 - auc: 0.8393
+313/313 [==============================] - 8s 23ms/step - loss: nan - accuracy: 0.4961 - auc: 0.5000
+313/313 [==============================] - 7s 23ms/step - loss: 0.5797 - accuracy: 0.6881 - auc: 0.7649
+313/313 [==============================] - 7s 22ms/step - loss: 0.6456 - accuracy: 0.6815 - auc: 0.7805
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[274]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>[0.6456372737884521, 0.6815000176429749, 0.7804639935493469]</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>From the models evaluation we can notice how GRU models outperform LSTMs in each case, as such we will focus our further analysis on the GRU models only. Just to highlight this difference we will plot the validation accuracy of all models.
+Note: we utlize the validation accuracy instead of the training accuracy to better represent the actual performance of the model. Also we display accuracy instead of loss as some models present spikes out of scale in the loss that would render the plot completely unreadable.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[281]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Plotting the validation accuracy for the best and worst GRU and LSTM Models</span>
+<span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">history_32_GRU_128</span><span class="p">[</span><span class="s1">&#39;val_accuracy&#39;</span><span class="p">])),</span> 
+                <span class="n">y</span><span class="o">=</span><span class="p">[</span>
+                    <span class="n">history_128_GRU_128</span><span class="p">[</span><span class="s1">&#39;val_accuracy&#39;</span><span class="p">],</span>
+                    <span class="n">history_128_GRU_64</span><span class="p">[</span><span class="s1">&#39;val_accuracy&#39;</span><span class="p">],</span>
+                    <span class="n">history_128_GRU_32</span><span class="p">[</span><span class="s1">&#39;val_accuracy&#39;</span><span class="p">],</span>
+                    <span class="n">history_64_GRU_128</span><span class="p">[</span><span class="s1">&#39;val_accuracy&#39;</span><span class="p">],</span>
+                    <span class="n">history_64_GRU_64</span><span class="p">[</span><span class="s1">&#39;val_accuracy&#39;</span><span class="p">],</span>
+                    <span class="n">history_64_GRU_32</span><span class="p">[</span><span class="s1">&#39;val_accuracy&#39;</span><span class="p">],</span>
+                    <span class="n">history_32_GRU_128</span><span class="p">[</span><span class="s1">&#39;val_accuracy&#39;</span><span class="p">],</span>
+                    <span class="n">history_32_GRU_64</span><span class="p">[</span><span class="s1">&#39;val_accuracy&#39;</span><span class="p">],</span>
+                    <span class="n">history_32_GRU_32</span><span class="p">[</span><span class="s1">&#39;val_accuracy&#39;</span><span class="p">],</span>
+                    <span class="n">history_128_LSTM_128</span><span class="p">[</span><span class="s1">&#39;val_accuracy&#39;</span><span class="p">],</span>
+                    <span class="n">history_128_LSTM_64</span><span class="p">[</span><span class="s1">&#39;val_accuracy&#39;</span><span class="p">],</span>
+                    <span class="n">history_128_LSTM_32</span><span class="p">[</span><span class="s1">&#39;val_accuracy&#39;</span><span class="p">],</span>
+                    <span class="n">history_64_LSTM_128</span><span class="p">[</span><span class="s1">&#39;val_accuracy&#39;</span><span class="p">],</span>
+                    <span class="n">history_64_LSTM_64</span><span class="p">[</span><span class="s1">&#39;val_accuracy&#39;</span><span class="p">],</span>
+                    <span class="n">history_64_LSTM_32</span><span class="p">[</span><span class="s1">&#39;val_accuracy&#39;</span><span class="p">],</span>
+                    <span class="n">history_32_LSTM_128</span><span class="p">[</span><span class="s1">&#39;val_accuracy&#39;</span><span class="p">],</span>
+                    <span class="n">history_32_LSTM_64</span><span class="p">[</span><span class="s1">&#39;val_accuracy&#39;</span><span class="p">],</span>
+                    <span class="n">history_32_LSTM_32</span><span class="p">[</span><span class="s1">&#39;val_accuracy&#39;</span><span class="p">],</span>
+                    <span class="p">])</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;history_128_GRU_128&#39;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;history_128_GRU_64&#39;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;history_128_GRU_32&#39;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;history_64_GRU_128&#39;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;history_64_GRU_64&#39;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;history_64_GRU_32&#39;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;history_32_GRU_128&#39;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;history_32_GRU_64&#39;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;history_32_GRU_32&#39;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;history_128_LSTM_128&#39;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;history_128_LSTM_64&#39;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">11</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;history_128_LSTM_32&#39;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">12</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;history_64_LSTM_128&#39;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">13</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;history_64_LSTM_64&#39;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">14</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;history_64_LSTM_32&#39;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">15</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;history_32_LSTM_128&#39;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">16</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;history_32_LSTM_64&#39;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">17</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;history_32_LSTM_32&#39;</span>
+
+
+<span class="n">fig</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Validation Accuracy for all models&quot;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">.5</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Validation Accuracy&quot;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Epoch&quot;</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>We proceed diving deeper in the other variables utlizing GRU models only.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[283]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">history_128_GRU_128</span><span class="p">[</span><span class="s1">&#39;val_loss&#39;</span><span class="p">])),</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="n">history_128_GRU_128</span><span class="p">[</span><span class="s1">&#39;val_loss&#39;</span><span class="p">],</span> <span class="n">history_128_GRU_64</span><span class="p">[</span><span class="s1">&#39;val_loss&#39;</span><span class="p">],</span> <span class="n">history_128_GRU_32</span><span class="p">[</span><span class="s1">&#39;val_loss&#39;</span><span class="p">],</span> <span class="n">history_128_GRU_128</span><span class="p">[</span><span class="s1">&#39;val_accuracy&#39;</span><span class="p">],</span> <span class="n">history_128_GRU_64</span><span class="p">[</span><span class="s1">&#39;val_accuracy&#39;</span><span class="p">],</span> <span class="n">history_128_GRU_32</span><span class="p">[</span><span class="s1">&#39;val_accuracy&#39;</span><span class="p">]])</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;batch size 128 validation loss value&quot;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;batch size 64 validation loss value&quot;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;batch size 32 validation loss value&quot;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;batch size 128 validation accuracy value&quot;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;batch size 64 validation accuracy value&quot;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;batch size 32 validation accuracy value&quot;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Validation Loss and accuracy for GRU models with different batch size and layer size of 128&quot;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">.5</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Loss/accuracy&quot;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Epoch&quot;</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[284]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">history_64_GRU_128</span><span class="p">[</span><span class="s1">&#39;val_loss&#39;</span><span class="p">])),</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="n">history_64_GRU_128</span><span class="p">[</span><span class="s1">&#39;val_loss&#39;</span><span class="p">],</span> <span class="n">history_64_GRU_64</span><span class="p">[</span><span class="s1">&#39;val_loss&#39;</span><span class="p">],</span> <span class="n">history_64_GRU_32</span><span class="p">[</span><span class="s1">&#39;val_loss&#39;</span><span class="p">],</span> <span class="n">history_64_GRU_128</span><span class="p">[</span><span class="s1">&#39;val_accuracy&#39;</span><span class="p">],</span> <span class="n">history_64_GRU_64</span><span class="p">[</span><span class="s1">&#39;val_accuracy&#39;</span><span class="p">],</span> <span class="n">history_64_GRU_32</span><span class="p">[</span><span class="s1">&#39;val_accuracy&#39;</span><span class="p">]])</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;batch size 128 validation loss value&quot;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;batch size 64 validation loss value&quot;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;batch size 32 validation loss value&quot;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;batch size 128 validation accuracy value&quot;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;batch size 64 validation accuracy value&quot;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;batch size 32 validation accuracy value&quot;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Validation Loss and accuracy for GRU models with different batch size and layer size of 64&quot;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">.5</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Loss/accuracy&quot;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Epoch&quot;</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[286]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">history_32_GRU_128</span><span class="p">[</span><span class="s1">&#39;val_loss&#39;</span><span class="p">])),</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="n">history_32_GRU_128</span><span class="p">[</span><span class="s1">&#39;val_loss&#39;</span><span class="p">],</span> <span class="n">history_32_GRU_64</span><span class="p">[</span><span class="s1">&#39;val_loss&#39;</span><span class="p">],</span> <span class="n">history_32_GRU_32</span><span class="p">[</span><span class="s1">&#39;val_loss&#39;</span><span class="p">],</span> <span class="n">history_32_GRU_128</span><span class="p">[</span><span class="s1">&#39;val_accuracy&#39;</span><span class="p">],</span> <span class="n">history_32_GRU_64</span><span class="p">[</span><span class="s1">&#39;val_accuracy&#39;</span><span class="p">],</span> <span class="n">history_32_GRU_32</span><span class="p">[</span><span class="s1">&#39;val_accuracy&#39;</span><span class="p">]])</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;batch size 128 validation loss value&quot;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;batch size 64 validation loss value&quot;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;batch size 32 validation loss value&quot;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;batch size 128 validation accuracy value&quot;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;batch size 64 validation accuracy value&quot;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;batch size 32 validation accuracy value&quot;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Validation Loss and accuracy for GRU models with different batch size and layer size of 32&quot;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">.5</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Loss/accuracy&quot;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Epoch&quot;</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>From the previous 3 graphs 2 patterns seem to emerge:</p>
+<ul>
+<li>a lower layer size presents more stable results, as we can see in the last graph no model seem to overfit, whereas this pattern becomes more evident as the layer size increases.</li>
+<li>in case of larger layers bigger batch sizes seem to help reduce overfit, when it occurs.</li>
+</ul>
+<p>To make sure this situation is due to overfit let's plot the graphs that are not converging in validation loss with their respective training loss.</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[288]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">history_128_GRU_128</span><span class="p">[</span><span class="s1">&#39;val_loss&#39;</span><span class="p">])),</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="n">history_128_GRU_128</span><span class="p">[</span><span class="s1">&#39;val_loss&#39;</span><span class="p">],</span> <span class="n">history_128_GRU_64</span><span class="p">[</span><span class="s1">&#39;val_loss&#39;</span><span class="p">],</span> <span class="n">history_128_GRU_32</span><span class="p">[</span><span class="s1">&#39;val_loss&#39;</span><span class="p">],</span> <span class="n">history_128_GRU_128</span><span class="p">[</span><span class="s1">&#39;loss&#39;</span><span class="p">],</span> <span class="n">history_128_GRU_64</span><span class="p">[</span><span class="s1">&#39;loss&#39;</span><span class="p">],</span> <span class="n">history_128_GRU_32</span><span class="p">[</span><span class="s1">&#39;loss&#39;</span><span class="p">]])</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;batch size 128 validation loss value&quot;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;batch size 64 validation loss value&quot;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;batch size 32 validation loss value&quot;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;batch size 128 training loss value&quot;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;batch size 64 training loss value&quot;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;batch size 32 training loss value&quot;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Validation Loss and training loss for GRU models with different batch size and layer size of 128&quot;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">.5</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Loss&quot;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Epoch&quot;</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>As visible in the above graph while training loss tends to decrease validation loss start increasing gradually after epoch 20 which leads us to consider this an overfitting example.</p>
+<p>For a final evaluation we will plot the best model of each layer size based on their validation loss.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[294]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">history_128_GRU_128</span><span class="p">[</span><span class="s1">&#39;val_loss&#39;</span><span class="p">])),</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="n">history_128_GRU_128</span><span class="p">[</span><span class="s1">&#39;val_loss&#39;</span><span class="p">],</span> <span class="n">history_64_GRU_128</span><span class="p">[</span><span class="s1">&#39;val_loss&#39;</span><span class="p">],</span> <span class="n">history_32_GRU_128</span><span class="p">[</span><span class="s1">&#39;val_loss&#39;</span><span class="p">],</span> <span class="n">history_128_GRU_128</span><span class="p">[</span><span class="s1">&#39;val_accuracy&#39;</span><span class="p">],</span> <span class="n">history_64_GRU_128</span><span class="p">[</span><span class="s1">&#39;val_accuracy&#39;</span><span class="p">],</span> <span class="n">history_32_GRU_128</span><span class="p">[</span><span class="s1">&#39;val_accuracy&#39;</span><span class="p">]])</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;layer size 128 batch size 128 validation loss value&quot;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;layer size 64 batch size 128 validation loss value&quot;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;layer size 32 batch size 128 validation loss value&quot;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;layer size 128 batch size 128 validation accuracy value&quot;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;layer size 64 batch size 128 validation accuracy value&quot;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;layer size 32 batch size 128 validation accuracy value&quot;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Validation Loss and Validation accuracy for GRU models with different layer size and batch size of 128&quot;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">.5</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Loss/accuracy&quot;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Epoch&quot;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>As we can see while accuracy is extremely similar the validation loss present a clear difference in favor of smaller networks.</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Conclusion">Conclusion<a class="anchor-link" href="#Conclusion">&#182;</a></h2><p>By empirical evidence we can assess that GRU perform better than LSTM.</p>
+<p>In this particular case we see how a lower number of neurons in the Dense and Recurring layers tend to converge more.</p>
+<p>A higher batch size seems to be preferable, especially in the case of higher number of neurons as it helps avoiding overfitting.</p>
 
 </div>
 </div>
